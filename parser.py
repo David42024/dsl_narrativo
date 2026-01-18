@@ -16,10 +16,16 @@ def parser(tokens):
             _, mood = line.split(" ", 1)
             current.mood = mood.strip()
         elif line.startswith("IF"):
-            parts = line.split('"')
-            event = parts[1]
-            new_mood = parts[2].split()[-1]
-            rule = RuleNode(event, new_mood)
+            required_mood = None
+
+            if "mood IS" in line:
+                parts = line.split()
+                required_mood = parts[parts.index("IS") + 1]
+            
+            event = line.split('"')[1]
+            new_mood = line.split()[-1]
+            
+            rule = RuleNode(event, new_mood, required_mood)
             current.rules.append(rule)
     
     return personajes

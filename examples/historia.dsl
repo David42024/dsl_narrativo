@@ -1,7 +1,7 @@
 CHARACTER Juan
   MOOD sad
-  IF hears "music" THEN MOOD happy
+  IF mood IS sad AND hears "music" THEN MOOD happy
 
-CHARACTER Juan2
-  MOOD sad
-  IF hears "music" THEN MOOD happy
+CHARACTER David
+  MOOD angry
+  IF mood IS angry AND hears "music" THEN MOOD happy
